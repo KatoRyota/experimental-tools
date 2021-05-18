@@ -1,0 +1,12 @@
+{
+  "requestId": "000-000-000",
+  "threadId": "10",
+  "messages": [
+    {
+      "id": "10",
+      "postDateTime": "2021/05/14T15:00:00.123 +09:00",
+      "contributor": "Kato Ryota",
+      "message": "こんにちは。"
+    }
+  ]
+}

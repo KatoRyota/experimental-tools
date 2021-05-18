@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <property name="APPLICATION_LOG_FILE" value="log/application.log"/>
+    <property name="ACCESS_LOG_FILE" value="log/access.log"/>
+    <property name="LOG_PATTERN" value="[%d{HH:mm:ss.SSS}][%level][%thread][%-40.40logger{39}][%file:%line] %msg%n"/>
+
+    <appender name="APPLICATION_LOG_FILE_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${APPLICATION_LOG_FILE}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <cleanHistoryOnStart>${LOG_FILE_CLEAN_HISTORY_ON_START:-false}</cleanHistoryOnStart>
+            <fileNamePattern>
+                ${ROLLING_FILE_NAME_PATTERN:-${APPLICATION_LOG_FILE}.%d{yyyy-MM-dd}.%i.gz}
+            </fileNamePattern>
+            <maxFileSize>${LOG_FILE_MAX_SIZE:-10MB}</maxFileSize>
+            <maxHistory>${LOG_FILE_MAX_HISTORY:-7}</maxHistory>
+            <totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP:-0}</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="ACCESS_LOG_FILE_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${ACCESS_LOG_FILE}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <cleanHistoryOnStart>${LOG_FILE_CLEAN_HISTORY_ON_START:-false}</cleanHistoryOnStart>
+            <fileNamePattern>
+                ${ROLLING_FILE_NAME_PATTERN:-${ACCESS_LOG_FILE}.%d{yyyy-MM-dd}.%i.gz}
+            </fileNamePattern>
+            <maxFileSize>${LOG_FILE_MAX_SIZE:-10MB}</maxFileSize>
+            <maxHistory>${LOG_FILE_MAX_HISTORY:-7}</maxHistory>
+            <totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP:-0}</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="CONSOLE_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.example" level="DEBUG"/>
+
+    <logger name="ACCESS_LOG_FILE_LOGGER" level="INFO" additivity="false">
+        <appender-ref ref="ACCESS_LOG_FILE_APPENDER"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="APPLICATION_LOG_FILE_APPENDER"/>
+        <appender-ref ref="CONSOLE_APPENDER"/>
+    </root>
+
+</configuration>
