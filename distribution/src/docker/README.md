@@ -65,7 +65,7 @@ tail -f stdout
 curl -s -X GET  "http://localhost:50001/employees"
 curl -s -X GET  "http://localhost:50002/getLatestMessages?requestId=000-000-000&threadId=10&latestMessageId=20"
 
-cd ~/app/distribution-0.0.1-SNAPSHOT/experimental-tools/log/
+cd ~/app/distribution-0.0.1-SNAPSHOT/employees-api/log/
 tail -f application.log
 tail -f access.log
 ```
