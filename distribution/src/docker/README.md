@@ -2,7 +2,7 @@
 
 ## 概要
 
-本ドキュメントはDockerを利用して、chat-appのローカル環境を構築する為の手順です。  
+本ドキュメントはDockerを利用して、experimental-toolsのローカル環境を構築する為の手順です。  
 依存アプリケーションは、固定データを返すテスト用アプリケーションです。
 
 ## 前提
@@ -43,7 +43,7 @@ rm -vrf ./distribution-0.0.1-SNAPSHOT*
 
 ```shell
 # [Ubuntu]
-cp -vip `wslpath -u 'C:\Users\kator\IdeaProjects\chat-app\distribution\target\distribution-0.0.1-SNAPSHOT-local-bin.tar.gz'` ~/app/
+cp -vip `wslpath -u 'C:\Users\kator\IdeaProjects\experimental-tools\distribution\target\distribution-0.0.1-SNAPSHOT-local-bin.tar.gz'` ~/app/
 
 cd ~/app/
 tar xzvf distribution-0.0.1-SNAPSHOT-local-bin.tar.gz
@@ -65,7 +65,7 @@ tail -f stdout
 curl -s -X GET  "http://localhost:50001/employees"
 curl -s -X GET  "http://localhost:50002/getLatestMessages?requestId=000-000-000&threadId=10&latestMessageId=20"
 
-cd ~/app/distribution-0.0.1-SNAPSHOT/chat-app/log/
+cd ~/app/distribution-0.0.1-SNAPSHOT/experimental-tools/log/
 tail -f application.log
 tail -f access.log
 ```
