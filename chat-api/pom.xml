@@ -5,16 +5,36 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.example</groupId>
-        <artifactId>experimental-tools</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.5</version>
+        <relativePath/>
     </parent>
 
+    <groupId>com.example</groupId>
     <artifactId>chat-api</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <java.version>11</java.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring-boot-maven-plugin.directories.directory.config>
+                    ${project.basedir}/src/config/local
+                </spring-boot-maven-plugin.directories.directory.config>
+                <spring-boot-maven-plugin.directories.directory.data>
+                    ${project.basedir}/src/data/local
+                </spring-boot-maven-plugin.directories.directory.data>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
@@ -23,6 +43,10 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <layout>ZIP</layout>
+                    <directories>
+                        <directory>${spring-boot-maven-plugin.directories.directory.config}</directory>
+                        <directory>${spring-boot-maven-plugin.directories.directory.data}</directory>
+                    </directories>
                 </configuration>
             </plugin>
             <plugin>
@@ -56,6 +80,7 @@
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>core-modules</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

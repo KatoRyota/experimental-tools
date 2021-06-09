@@ -1,0 +1,64 @@
+version: "3"
+services:
+  employees-app:
+    build:
+      context: ./employees-app/
+    image: employees-app
+    container_name: employees-app
+    hostname: employees-app
+    dns: 8.8.8.8
+    tty: true
+    stdin_open: true
+    ports:
+      - "50000:8080"
+    environment:
+      - TZ=Asia/Tokyo
+      - LANG=ja_JP.utf8
+    networks:
+      - experimental-tools
+    volumes:
+      - ./employees-app/config:/app/config:ro
+      - ./employees-app/data:/app/data:ro
+      - ./employees-app/log:/app/log
+  employees-api:
+    build:
+      context: ./employees-api/
+    image: employees-api
+    container_name: employees-api
+    hostname: employees-api
+    dns: 8.8.8.8
+    tty: true
+    stdin_open: true
+    ports:
+      - "50001:8080"
+    environment:
+      - TZ=Asia/Tokyo
+      - LANG=ja_JP.utf8
+    networks:
+      - experimental-tools
+    volumes:
+      - ./employees-api/config:/app/config:ro
+      - ./employees-api/data:/app/data:ro
+      - ./employees-api/log:/app/log
+  chat-api:
+    build:
+      context: ./chat-api/
+    image: chat-api
+    container_name: chat-api
+    hostname: chat-api
+    dns: 8.8.8.8
+    tty: true
+    stdin_open: true
+    ports:
+      - "50002:8080"
+    environment:
+      - TZ=Asia/Tokyo
+      - LANG=ja_JP.utf8
+    networks:
+      - experimental-tools
+    volumes:
+      - ./chat-api/config:/app/config:ro
+      - ./chat-api/data:/app/data:ro
+      - ./chat-api/log:/app/log
+networks:
+  experimental-tools:

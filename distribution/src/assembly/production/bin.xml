@@ -14,7 +14,7 @@
     <files>
         <file>
             <source>../employees-app/target/employees-app-0.0.1-SNAPSHOT.jar</source>
-            <outputDirectory/>
+            <outputDirectory>employees-app</outputDirectory>
         </file>
     </files>
 </assembly>

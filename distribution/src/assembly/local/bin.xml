@@ -15,20 +15,12 @@
             <outputDirectory>employees-api/data</outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>src/docker/local/employees-api/log</directory>
-            <outputDirectory>employees-api/log</outputDirectory>
-        </fileSet>
-        <fileSet>
             <directory>../employees-app/src/config/local</directory>
             <outputDirectory>employees-app/config</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>../employees-app/src/data/local</directory>
             <outputDirectory>employees-app/data</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>src/docker/local/employees-app/log</directory>
-            <outputDirectory>employees-app/log</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>../chat-api/src/config/local</directory>
@@ -38,35 +30,31 @@
             <directory>../chat-api/src/data/local</directory>
             <outputDirectory>chat-api/data</outputDirectory>
         </fileSet>
-        <fileSet>
-            <directory>src/docker/local/chat-api/log</directory>
-            <outputDirectory>chat-api/log</outputDirectory>
-        </fileSet>
     </fileSets>
     <files>
         <file>
+            <source>../docker/local/docker-compose.yml</source>
+            <outputDirectory/>
+        </file>
+        <file>
             <source>../employees-api/target/employees-api-0.0.1-SNAPSHOT.jar</source>
-            <outputDirectory/>
-        </file>
-        <file>
-            <source>../employees-app/target/employees-app-0.0.1-SNAPSHOT.jar</source>
-            <outputDirectory/>
-        </file>
-        <file>
-            <source>../chat-api/target/chat-api-0.0.1-SNAPSHOT.jar</source>
-            <outputDirectory/>
-        </file>
-        <file>
-            <source>src/docker/local/docker-compose.yml</source>
-            <outputDirectory/>
+            <outputDirectory>employees-api</outputDirectory>
         </file>
         <file>
             <source>src/docker/local/employees-api/Dockerfile</source>
             <outputDirectory>employees-api</outputDirectory>
         </file>
         <file>
+            <source>../employees-app/target/employees-app-0.0.1-SNAPSHOT.jar</source>
+            <outputDirectory>employees-app</outputDirectory>
+        </file>
+        <file>
             <source>src/docker/local/employees-app/Dockerfile</source>
             <outputDirectory>employees-app</outputDirectory>
+        </file>
+        <file>
+            <source>../chat-api/target/chat-api-0.0.1-SNAPSHOT.jar</source>
+            <outputDirectory>chat-api</outputDirectory>
         </file>
         <file>
             <source>src/docker/local/chat-api/Dockerfile</source>
