@@ -41,7 +41,7 @@
             <outputDirectory>employees-api</outputDirectory>
         </file>
         <file>
-            <source>src/docker/local/employees-api/Dockerfile</source>
+            <source>../docker/local/employees-api/Dockerfile</source>
             <outputDirectory>employees-api</outputDirectory>
         </file>
         <file>
@@ -49,7 +49,7 @@
             <outputDirectory>employees-app</outputDirectory>
         </file>
         <file>
-            <source>src/docker/local/employees-app/Dockerfile</source>
+            <source>../docker/local/employees-app/Dockerfile</source>
             <outputDirectory>employees-app</outputDirectory>
         </file>
         <file>
@@ -57,7 +57,7 @@
             <outputDirectory>chat-api</outputDirectory>
         </file>
         <file>
-            <source>src/docker/local/chat-api/Dockerfile</source>
+            <source>../docker/local/chat-api/Dockerfile</source>
             <outputDirectory>chat-api</outputDirectory>
         </file>
     </files>
