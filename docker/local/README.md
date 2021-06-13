@@ -31,7 +31,9 @@ mvn clean package -Dmaven.test.skip=true
 mkdir -vp ~/app
 cd ~/app/
 rm -vrf  distribution-0.0.1-SNAPSHOT*
-cp -vip `wslpath -u 'C:\Users\kator\repo\experimental-tools\distribution\target\distribution-0.0.1-SNAPSHOT-local-bin.tar.gz'` ~/app/
+cp -vip `wslpath -u 'C:\Users\kator\repo\experimental-tools\distribution\target\distribution-0.0.1-SNAPSHOT-local-bin.tar.gz'` \
+        ~/app/
+        
 tar xzvf distribution-0.0.1-SNAPSHOT-local-bin.tar.gz
 ```
 
