@@ -24,30 +24,14 @@
 mvn clean package -Dmaven.test.skip=true
 ```
 
-## Docker上のリソースを全て削除
-
-以下のコマンドを実行すると、Docker Compose管理外のものも削除されるので注意。
-
-```shell
-# [Ubuntu]
-docker container stop `docker ps -q`
-docker system prune -a --volumes
-```
-
-## 旧バージョンのアプリケーションを削除
-
-```shell
-# [Ubuntu]
-cd ~/app/
-rm -vrf ./distribution-0.0.1-SNAPSHOT*
-```
-
 ## アプリケーションの配置
 
 ```shell
 # [Ubuntu]
-cp -vip `wslpath -u 'C:\Users\kator\repo\experimental-tools\distribution\target\distribution-0.0.1-SNAPSHOT-local-bin.tar.gz'` ~/app/
+mkdir -vp ~/app
 cd ~/app/
+rm -vrf  distribution-0.0.1-SNAPSHOT*
+cp -vip `wslpath -u 'C:\Users\kator\repo\experimental-tools\distribution\target\distribution-0.0.1-SNAPSHOT-local-bin.tar.gz'` ~/app/
 tar xzvf distribution-0.0.1-SNAPSHOT-local-bin.tar.gz
 ```
 
@@ -56,8 +40,8 @@ tar xzvf distribution-0.0.1-SNAPSHOT-local-bin.tar.gz
 ```shell
 # [Ubuntu]
 cd ~/app/distribution-0.0.1-SNAPSHOT/
-docker-compose up --build > stdout 2>&1 < /dev/null &
-tail -f stdout
+docker-compose up --build -d
+docker-compose logs -f
 ```
 
 ## 動作確認
@@ -83,7 +67,8 @@ docker-compose down
 ```shell
 # [Ubuntu]
 cd ${DOCKER_COMPOSE_YML_DIR}
-docker-compose up --build > stdout 2>&1 < /dev/null &
+docker-compose up --build -d
+docker-compose logs -f
 ```
 
 ## Dockerコンテナを一括で停止/削除したい
@@ -94,19 +79,12 @@ cd ${DOCKER_COMPOSE_YML_DIR}
 docker-compose down
 ```
 
-## Docker上のリソースを一括で削除したい
+## Dockerリソースを一括で削除したい
 
 ```shell
 # [Ubuntu]
 docker container stop `docker ps -q`
 docker system prune -a --volumes
-```
-
-## Dockerコンテナにログインしたい
-
-```shell
-# [Ubuntu]
-docker container exec -it ${CONTAINER_NAME} /bin/bash
 ```
 
 ## Dockerコンテナの一覧を確認したい
@@ -137,7 +115,21 @@ docker network ls
 docker volume ls
 ```
 
-## Dockerコンテナの状態を確認したい
+## Dockerコンテナでインタラクティブシェルを起動したい
+
+```shell
+# [Ubuntu]
+docker container exec -it ${CONTAINER_NAME} /bin/bash
+```
+
+## Dockerコンテナのログを確認したい
+
+```shell
+# [Ubuntu]
+docker container logs -f ${CONTAINER_NAME}
+```
+
+## Dockerコンテナの詳細を確認したい
 
 ```shell
 # [Ubuntu]
@@ -151,8 +143,8 @@ docker container inspect ${CONTAINER_NAME}
 ```shell
 # [Ubuntu]
 docker container run --dns=8.8.8.8 --rm \
-  --name=ubuntu18-04 --hostname=ubuntu18-04 \
-  -itd ubuntu:18.04
+    --name=ubuntu18-04 --hostname=ubuntu18-04 \
+    -itd ubuntu:18.04
 
 # コンテナに入って、手動で環境構築（インストールなど）を行っていき、その手順をDockerfileに記載する。
 docker container exec -it ubuntu18-04 /bin/bash
@@ -163,8 +155,8 @@ docker container exec -it ubuntu18-04 /bin/bash
 ```shell
 # [Ubuntu]
 docker container run --dns=8.8.8.8 --rm \
-  --name=centos7 --hostname=centos7 \
-  -itd centos:7 /sbin/init
+    --name=centos7 --hostname=centos7 \
+    -itd centos:7 /sbin/init
   
 # コンテナに入って、手動で環境構築（インストールなど）を行っていき、その手順をDockerfileに記載する。
 docker container exec -it centos7 /bin/bash
@@ -177,8 +169,8 @@ docker container exec -it centos7 /bin/bash
 cd ${DOCKERFILE_DIR}
 docker image build -t ${IMAGE_NAME}:${VERSION} .
 docker container run --dns=8.8.8.8 --rm \
-  --name=${CONTAINER_NAME} --hostname=${HOST_NAME} \
-  -itd ${IMAGE_NAME}:${VERSION}
+    --name=${CONTAINER_NAME} --hostname=${HOST_NAME} \
+    -itd ${IMAGE_NAME}:${VERSION}
 
 docker container exec -it ${CONTAINER_NAME} /bin/bash
 ```
