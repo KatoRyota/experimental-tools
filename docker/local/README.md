@@ -50,8 +50,9 @@ tail -f stdout
 
 ```shell
 # [Ubuntu]
-curl -s -X GET  "http://localhost:50001/employees"
-curl -s -X GET  "http://localhost:50002/getLatestMessages?requestId=000-000-000&threadId=10&latestMessageId=20"
+curl -s -X GET "http://localhost:50001/employees"
+curl -s -X GET "http://localhost:50002/getLatestMessages?requestId=000-000-000&threadId=10&latestMessageId=20"
+curl -s -X GET "http://localhost:50000/"
 ```
 
 ## Dockerコンテナの停止/削除
