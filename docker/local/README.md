@@ -42,8 +42,8 @@ tar xzvf distribution-0.0.1-SNAPSHOT-local-bin.tar.gz
 ```shell
 # [Ubuntu]
 cd ~/app/distribution-0.0.1-SNAPSHOT/
-docker-compose up --build -d
-docker-compose logs -f
+docker-compose up --build > stdout 2>&1 < /dev/null &
+tail -f stdout
 ```
 
 ## 動作確認

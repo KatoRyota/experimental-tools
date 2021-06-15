@@ -56,9 +56,5 @@ services:
       - LANG=ja_JP.utf8
     networks:
       - experimental-tools
-    volumes:
-      - ./chat-api/config:/app/config:ro
-      - ./chat-api/data:/app/data:ro
-      - ./chat-api/log:/app/log
 networks:
   experimental-tools:
