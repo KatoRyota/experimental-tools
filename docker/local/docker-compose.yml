@@ -16,10 +16,6 @@ services:
       - LANG=ja_JP.utf8
     networks:
       - experimental-tools
-    volumes:
-      - ./employees-app/config:/app/config:ro
-      - ./employees-app/data:/app/data:ro
-      - ./employees-app/log:/app/log
   employees-api:
     build:
       context: ./employees-api/
@@ -36,10 +32,6 @@ services:
       - LANG=ja_JP.utf8
     networks:
       - experimental-tools
-    volumes:
-      - ./employees-api/config:/app/config:ro
-      - ./employees-api/data:/app/data:ro
-      - ./employees-api/log:/app/log
   chat-api:
     build:
       context: ./chat-api/
