@@ -4,13 +4,13 @@ FROM openjdk:11-jdk-slim
 RUN groupadd -r docker && \
     useradd -r -g docker docker
 
-# ---- アプリケーションの配置 ----
+# ---- ユーザーの変更 ----
 USER docker
 
+# ---- アプリケーションの配置と起動 ----
 COPY --chown=docker:docker chat-api-*.jar /app/
 COPY --chown=docker:docker config         /app/config
 COPY --chown=docker:docker data           /app/data
 
-# ---- アプリケーションの起動 ----
 WORKDIR /app/
 CMD ["sh","-c", "java -jar chat-api-*.jar"]
