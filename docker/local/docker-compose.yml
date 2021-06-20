@@ -19,9 +19,9 @@ services:
       - LANG=ja_JP.utf8
     networks:
       - experimental-tools
-#    volumes:
-#      - m2:/home/docker/.m2
+    volumes:
+      - m2:/home/docker/.m2
 networks:
   experimental-tools:
-#volumes:
-#  m2:
+volumes:
+  m2:
