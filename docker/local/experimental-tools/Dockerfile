@@ -4,13 +4,11 @@ FROM openjdk:11-jdk-slim
 RUN groupadd -g 61000 docker && \
     useradd -l -m -s /bin/false -g docker -u 61000 docker
 
-VOLUME ["/home/docker/.m2"]
-
 # ---- ユーザーの変更 ----
 USER docker
-USER root
-RUN chown -R docker:docker /home/docker/.m2
-USER docker
+
+RUN mkdir -vp /home/docker/.m2
+VOLUME ["/home/docker/.m2"]
 
 # ---- アプリケーションの配置と起動 ----
 COPY --chown=docker:docker . /app/experimental-tools
