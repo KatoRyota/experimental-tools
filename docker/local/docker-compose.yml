@@ -20,7 +20,7 @@ services:
     networks:
       - experimental-tools
     volumes:
-      - m2:~/.m2
+      - m2:/home/docker/.m2
 networks:
   experimental-tools:
 volumes:
