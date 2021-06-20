@@ -13,7 +13,7 @@ USER docker
 COPY --chown=docker:docker . /app/experimental-tools
 
 WORKDIR /app/experimental-tools/
-RUN chown u+x ./mvnw
+RUN chmod u+x ./mvnw
 
 # CMD ["sh","-c", "./mvnw spring-boot:run"]
 CMD ["/bin/bash"]
