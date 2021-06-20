@@ -8,7 +8,6 @@ RUN groupadd -g 61000 docker && \
 USER docker
 
 RUN mkdir -vp ~/.m2
-VOLUME ["/home/docker/.m2"]
 
 # ---- アプリケーションの配置と起動 ----
 COPY --chown=docker:docker . /app/experimental-tools
