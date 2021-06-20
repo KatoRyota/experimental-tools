@@ -15,5 +15,5 @@ COPY --chown=docker:docker . /app/experimental-tools
 WORKDIR /app/experimental-tools/
 RUN chmod u+x mvnw
 
-# CMD ["sh", "-c", "./mvnw install && ./mvnw spring-boot:start"]
+# CMD ["sh", "-c", "./mvnw install && ./mvnw spring-boot:run"]
 CMD ["/bin/bash"]
