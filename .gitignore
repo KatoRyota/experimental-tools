@@ -45,3 +45,6 @@ dump.rdb
 package-lock.json
 org.eclipse.*
 settings.json
+
+### experimental-tools ###
+docker/local/stdout

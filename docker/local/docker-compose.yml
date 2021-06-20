@@ -4,9 +4,9 @@ services:
     build:
       context: ../../
       dockerfile: ./docker/local/experimental-tools/Dockerfile
-    image: chat-api
-    container_name: chat-api
-    hostname: chat-api
+    image: experimental-tools
+    container_name: experimental-tools
+    hostname: experimental-tools
     dns: 8.8.8.8
     tty: true
     stdin_open: true
