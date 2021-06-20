@@ -7,10 +7,10 @@ RUN groupadd -r docker && \
 # ---- ユーザーの変更 ----
 USER docker
 
-# ---- アプリケーションの配置と起動 ----
-COPY --chown=docker:docker chat-api-*.jar /app/
-COPY --chown=docker:docker config         /app/config
-COPY --chown=docker:docker data           /app/data
+ENV MAVEN_OPTS="-Dmaven.repo.local=/app/.m2"
 
-WORKDIR /app/
-CMD ["sh","-c", "java -jar chat-api-*.jar"]
+# ---- アプリケーションの配置と起動 ----
+COPY --chown=docker:docker . /app/experimental-tools
+
+WORKDIR /app/experimental-tools/
+CMD ["sh","-c", "mvnw spring-boot:run"]

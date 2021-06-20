@@ -1,40 +1,9 @@
 version: "3"
 services:
-  employees-app:
+  experimental-tools:
     build:
-      context: ./employees-app/
-    image: employees-app
-    container_name: employees-app
-    hostname: employees-app
-    dns: 8.8.8.8
-    tty: true
-    stdin_open: true
-    ports:
-      - "50000:8080"
-    environment:
-      - TZ=Asia/Tokyo
-      - LANG=ja_JP.utf8
-    networks:
-      - experimental-tools
-  employees-api:
-    build:
-      context: ./employees-api/
-    image: employees-api
-    container_name: employees-api
-    hostname: employees-api
-    dns: 8.8.8.8
-    tty: true
-    stdin_open: true
-    ports:
-      - "50001:8080"
-    environment:
-      - TZ=Asia/Tokyo
-      - LANG=ja_JP.utf8
-    networks:
-      - experimental-tools
-  chat-api:
-    build:
-      context: ./chat-api/
+      context: ../../
+      dockerfile: ./docker/local/experimental-tools/Dockerfile
     image: chat-api
     container_name: chat-api
     hostname: chat-api
