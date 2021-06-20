@@ -7,7 +7,7 @@ RUN groupadd -g 61000 docker && \
 # ---- ユーザーの変更 ----
 USER docker
 
-RUN mkdir -vp /home/docker/.m2
+RUN mkdir -vp ~/.m2
 VOLUME ["/home/docker/.m2"]
 
 # ---- アプリケーションの配置と起動 ----
@@ -16,5 +16,5 @@ COPY --chown=docker:docker . /app/experimental-tools
 WORKDIR /app/experimental-tools/
 RUN chmod u+x mvnw
 
-# CMD ["sh", "-c", "./mvnw install -pl core-modules -am && ./mvnw spring-boot:run -pl chat-api,employees-api"]
-CMD ["/bin/bash"]
+CMD ["sh", "-c", "./mvnw install -pl core-modules -am && ./mvnw spring-boot:run -pl chat-api,employees-api"]
+# CMD ["/bin/bash"]
