@@ -12,8 +12,8 @@ USER docker
 # ---- アプリケーションの配置と起動 ----
 COPY --chown=docker:docker . /app/experimental-tools
 
+WORKDIR /app/experimental-tools/
 RUN chown u+x ./mvnw
 
-WORKDIR /app/experimental-tools/
 # CMD ["sh","-c", "./mvnw spring-boot:run"]
 CMD ["/bin/bash"]
