@@ -13,4 +13,5 @@ ENV MAVEN_OPTS="-Dmaven.repo.local=/app/.m2"
 COPY --chown=docker:docker . /app/experimental-tools
 
 WORKDIR /app/experimental-tools/
-CMD ["sh","-c", "./mvnw spring-boot:run"]
+# CMD ["sh","-c", "./mvnw spring-boot:run"]
+CMD ["/bin/bash"]
