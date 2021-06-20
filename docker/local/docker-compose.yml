@@ -2,8 +2,8 @@ version: "3"
 services:
   experimental-tools:
     build:
-      context: ../../../
-      dockerfile: ./experimental-tools/docker/local/experimental-tools/Dockerfile
+      context: ../../
+      dockerfile: .//docker/local/experimental-tools/Dockerfile
     image: experimental-tools
     container_name: experimental-tools
     hostname: experimental-tools

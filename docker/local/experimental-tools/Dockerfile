@@ -10,8 +10,7 @@ USER docker
 ENV MAVEN_OPTS="-Dmaven.repo.local=/app/.m2"
 
 # ---- アプリケーションの配置と起動 ----
-COPY --chown=docker:docker experimental-tools /app/experimental-tools
+COPY --chown=docker:docker . /app/experimental-tools
 
 WORKDIR /app/experimental-tools/
-# CMD ["sh","-c", "mvnw spring-boot:run"]
-CMD ["/bin/bash"]
+CMD ["sh","-c", "./mvnw spring-boot:run"]
