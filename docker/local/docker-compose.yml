@@ -11,7 +11,9 @@ services:
     tty: true
     stdin_open: true
     ports:
-      - "50002:8080"
+      - "50000:50000"
+      - "50001:50001"
+      - "50002:50002"
     environment:
       - TZ=Asia/Tokyo
       - LANG=ja_JP.utf8
