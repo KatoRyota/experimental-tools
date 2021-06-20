@@ -7,13 +7,10 @@ RUN groupadd -g 61000 docker && \
 # ---- ユーザーの変更 ----
 USER docker
 
-# ENV MAVEN_OPTS="-Dmaven.repo.local=/app/.m2"
-
 # ---- アプリケーションの配置と起動 ----
 COPY --chown=docker:docker . /app/experimental-tools
 
 WORKDIR /app/experimental-tools/
-RUN chmod u+x ./mvnw
+RUN chmod u+x mvnw
 
-# CMD ["sh","-c", "./mvnw spring-boot:run"]
-CMD ["/bin/bash"]
+CMD ["sh", "-c", "./mvnw install && ./mvnw spring-boot:run"]
