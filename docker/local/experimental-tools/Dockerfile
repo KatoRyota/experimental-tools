@@ -35,5 +35,6 @@ RUN mkdir -vp /home/docker/.m2 && \
     chmod u+x mvnw && \
     chmod u+x docker/local/run.sh
 
-# CMD ["sh", "-c", "./mvnw install && ./mvnw spring-boot:run"]
-CMD ["/bin/bash"]
+WORKDIR /app/experimental-tools/docker/local/experimental-tools/
+CMD ["sh", "-c", "./run.sh"]
+# CMD ["/bin/bash"]
