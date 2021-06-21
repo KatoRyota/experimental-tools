@@ -46,5 +46,8 @@ package-lock.json
 org.eclipse.*
 settings.json
 
+### Git ###
+.git/
+
 ### experimental-tools ###
 docker/local/stdout
