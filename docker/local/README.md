@@ -12,36 +12,24 @@
 * Windows 10
 * WSL 2 (Ubuntu 20.04 LTS)
 * Docker Desktop 3
-* JDK 11
-* Maven 3
 
-## アプリケーションのビルド
+WSL 2 (Ubuntu 20.04 LTS) には、以下のソフトウェアがインストールされてる必要があります。
 
-親プロジェクトのルートディレクトリで、以下のコマンドを実行。
+* Git
 
-```shell
-# [Windows]
-mvn clean package -Dmaven.test.skip=true
-```
-
-## アプリケーションの配置
+## experimental-toolsをダウンロード
 
 ```shell
 # [Ubuntu]
-mkdir -vp ~/app
-cd ~/app/
-rm -vrf  distribution-0.0.1-SNAPSHOT*
-cp -vip `wslpath -u 'C:\Users\kator\repo\experimental-tools\distribution\target\distribution-0.0.1-SNAPSHOT-local-bin.tar.gz'` \
-        ~/app/
-        
-tar xzvf distribution-0.0.1-SNAPSHOT-local-bin.tar.gz
+cd ~/repo/
+git clone https://github.com/KatoRyota/experimental-tools.git
 ```
 
 ## Dockerコンテナの作成/起動
 
 ```shell
 # [Ubuntu]
-cd ~/app/distribution-0.0.1-SNAPSHOT/
+cd ~/repo/experimental-tools/docker/local/
 docker-compose up --build > stdout 2>&1 < /dev/null &
 tail -f stdout
 ```
@@ -59,7 +47,7 @@ curl -s -X GET "http://localhost:50000/"
 
 ```shell
 # [Ubuntu]
-cd ~/app/distribution-0.0.1-SNAPSHOT/
+cd ~/repo/experimental-tools/docker/local/
 docker-compose down
 ```
 
