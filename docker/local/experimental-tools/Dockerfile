@@ -36,5 +36,5 @@ RUN mkdir -vp /home/docker/.m2 && \
     chmod u+x docker/local/experimental-tools/run.sh
 
 WORKDIR /app/experimental-tools/docker/local/experimental-tools/
-# CMD ["sh", "-c", "./run.sh"]
-CMD ["/bin/bash"]
+CMD ["./run.sh"]
+# CMD ["/bin/bash"]
