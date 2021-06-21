@@ -16,7 +16,7 @@ RUN \
     locale-gen && \
     # ---- ユーザーとグループの追加 ----
     groupadd -g 61000 docker && \
-    useradd -l -m -s /bin/false -g docker -u 61000 docker
+    useradd -m -g docker -u 61000 docker
 
 # ---- ユーザーの変更 ----
 USER docker
